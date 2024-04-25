@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DivineGrCeEstimatedIncome
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
@@ -25,3 +26,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+=======
+# Divine-gr-ce-Estimated-income
+>>>>>>> a5a707fce4ebee5a72495203d24e9418fda14786
