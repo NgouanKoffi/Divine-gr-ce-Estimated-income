@@ -1,0 +1,47 @@
+<div class="bg-white py-1 px-2 flex items-center justify-between border-b border-gray-300">    <!-- Icône de menu et logo pour les petits écrans -->
+    
+    <img src="../../../assets/images/logo.png" alt="Logo" class="h-10">
+
+    <!-- Contenu du menu pour les grands écrans -->
+    <div class="  mx-4 px-4 py-1 rounded-full grow justify-center">
+        <!-- Texte visible uniquement sur les petits écrans -->
+        <span class="flex custom-804:hidden items-center justify-center text-black text-lg font-bold underline whitespace-nowrap overflow-hidden">
+            <span class="text-ellipsis overflow-ellipsis">Divine Grace</span>
+        </span>
+        <!-- Liens visibles uniquement sur les grands écrans -->
+        <div class="hidden custom-804:flex bg-[#130c3f] rounded-full justify-center space-x-4">
+            <a href="#" class="hover:bg-white hover:text-[#130c3f] text-white rounded-full px-4 py-2 text-lg">About us</a>
+            <a href="#" class="hover:bg-white hover:text-[#130c3f] text-white rounded-full px-4 py-2 text-lg">Services</a>
+            <a href="#" class="hover:bg-white hover:text-[#130c3f] text-white rounded-full px-4 py-2 text-lg">Estimate Revenue</a>
+            <a href="#" class="hover:bg-white hover:text-[#130c3f] text-white rounded-full px-4 py-2 text-lg">Contact</a>
+        </div>
+    </div>
+
+    <div class="flex items-center custom-804:hidden">
+        <button id="menuButton" class="p-2" (click)="toggleSidebar()">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </div>
+
+    <!-- Bouton et icône pour les grands écrans -->
+    <div class="hidden custom-804:flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M 12 2 A 1 1 0 0 0 11.289062 2.296875 L 1.203125 11.097656 A 0.5 0.5 0 0 0 1 11.5 A 0.5 0.5 0 0 0 1.5 12 L 4 12 L 4 20 C 4 20.552 4.448 21 5 21 L 9 21 C 9.552 21 10 20.552 10 20 L 10 14 L 14 14 L 14 20 C 14 20.552 14.448 21 15 21 L 19 21 C 19.552 21 20 20.552 20 20 L 20 12 L 22.5 12 A 0.5 0.5 0 0 0 23 11.5 A 0.5 0.5 0 0 0 22.796875 11.097656 L 12.716797 2.3027344 A 1 1 0 0 0 12.710938 2.296875 A 1 1 0 0 0 12 2 z"></path>
+        </svg>
+        <span class="text-[#130c3f] font-semibold">SUBMIT PROPERTY</span>
+    </div>
+</div>
+
+<!-- Sidebar -->
+<div id="sidebar" [class]="showSidebar ? 'translate-x-0' : '-translate-x-full'" class="fixed inset-0 bg-gray-800 bg-opacity-75 z-50 transition-transform duration-300">
+    <div class="bg-[#130c3f] h-full w-64">
+        <!-- Bouton de fermeture -->
+        <button class="absolute top-0 right-0 p-4" (click)="toggleSidebar()">
+            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <a href="#" class="block hover:bg-gray-200 text-white px-4 py-2">About us</a>
+        <a href="#" class="block hover:bg-gray-200 text-white px-4 py-2">Services</a>
+        <a href="#" class="block hover:bg-gray-200 text-white px-4 py-2">Estimate Revenu</a>
+        <a href="#" class="block hover:bg-gray-200 text-white px-4 py-2">Contact</a>
+    </div>
+</div>

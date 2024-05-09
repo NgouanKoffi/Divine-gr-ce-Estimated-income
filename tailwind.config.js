@@ -3,7 +3,12 @@ module.exports = {
   purge: ['./src/**/*.{html,ts}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'custom-804': '804px',
+        'max-md': '793px',
+      },
+    },
   },
   variants: {
     extend: {},

@@ -1,0 +1,39 @@
+<div class="flex items-center justify-center h-full">
+    <div class="text-center w-4/5">
+        <!-- Contenu 1 -->
+        <div *ngIf="contentState === 1">
+            <p class="text-lg font-semibold text-custom-yellow leading-tight">Find out how much you can earn on average per day with your property</p>
+            <div class="mt-4">
+                <hr class="border-t-2 border-blue-600 w-full mx-auto">
+            </div>
+            <button (click)="nextContent()" class="mt-4 bg-blue-600 text-white py-2 px-4 rounded">Next</button>
+        </div>
+        <!-- Contenu 2 -->
+        <div *ngIf="contentState === 2" class="text-center">
+            <p class="text-2xl font-bold text-yellow-500">900 AED</p>
+            <p class="text-base">*Daily on average</p>
+            <p class="text-sm">Our Calculator estimates your income potential based on number of bedrooms, property type and area layout.</p>
+            <button (click)="nextContent()" class="mt-4 bg-blue-600 text-white py-2 px-4 rounded">Next</button>
+            <button (click)="previousContent()" class="mt-4 bg-gray-600 text-white py-2 px-4 rounded">Previous</button>
+        </div>
+        <!-- Contenu 3 -->
+        <div *ngIf="contentState === 3" class="text-left">
+            <form class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700"><span class="text-red-500">*</span>Your Name</label>
+                    <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Enter Text here">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700"><span class="text-red-500">*</span> Your Email</label>
+                    <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Enter Text here">
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700"><span class="text-red-500">*</span>Your Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Enter Text here">
+                </div>
+                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">Next</button>
+                <button (click)="previousContent()" class="mt-4 bg-gray-600 text-white py-2 px-4 rounded">Previous</button>
+            </form>
+        </div>
+    </div>
+</div>
