@@ -5,25 +5,42 @@
             <label for="area" class="block text-sm font-medium text-gray-700">
                 <span class="text-red-500">*</span>Area
             </label>
-            <select id="area" name="area" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                <option>Select Value</option>
+            <select id="area" name="area" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" (change)="calculateRevenue()">
+                <option value="">Select Value</option>
+                <option value="1000">Jumeirah - Near the beach</option>
+                <option value="800">Marina - Waterfront Apts</option>
+                <option value="1200">Downtown - Next to Burj Khalifa</option>
+                <option value="600">Deira - Traditional Market Area</option>
+                <option value="900">Palm Jumeirah - Island Living</option>
             </select>
         </div>
         <div class="mb-4">
             <label for="property-type" class="block text-sm font-medium text-gray-700">
                 <span class="text-red-500">*</span>Property Type
             </label>
-            <select id="property-type" name="propertyType" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                <option>Select Value</option>
+            <select id="property-type" name="propertyType" [(ngModel)]="selectedPropertyType" (change)="updateBedrooms(selectedPropertyType); calculateRevenue()" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                <option value="">Select Value</option>
+                <option *ngFor="let type of propertyTypes" [value]="type.id">{{ type.name }}</option>
             </select>
         </div>
         <div class="mb-6">
             <label for="bedrooms" class="block text-sm font-medium text-gray-700">
                 <span class="text-red-500">*</span>Number of Bedrooms
             </label>
-            <select id="bedrooms" name="bedrooms" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                <option>Select Value</option>
+            <select id="bedrooms" name="bedrooms" [(ngModel)]="selectedBedroom" (change)="calculateRevenue()" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                <option value="">Select Value</option>
+                <option *ngFor="let bedroom of bedroomsOptions" [value]="bedroom.id">{{ bedroom.name }}</option>
             </select>
+        </div>
+
+        <div class="mb-4">
+            <label for="checkin-date" class="block text-sm font-medium text-gray-700">Check-in Date and Time</label>
+            <input type="datetime-local" id="checkin-date" name="checkinDate" (change)="calculateRevenue()" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+        </div>
+        <div class="mb-4">
+            <label for="checkout-date" class="block text-sm font-medium text-gray-700">Check-out Date and Time</label>
+            <input type="datetime-local" id="checkout-date" name="checkoutDate" (change)="calculateRevenue()" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
         </div>
     </form>
 </div>
+

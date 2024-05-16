@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'custom-804': '804px',
+        'custom-804': '814px',
         'max-md': '793px',
       },
     },

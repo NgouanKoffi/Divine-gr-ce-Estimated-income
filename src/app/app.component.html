@@ -1,7 +1,18 @@
 <app-top-menu></app-top-menu>
-<div class="flex justify-between items-stretch h-full mb-10 mt-4 mx-4">
-    <app-left class="w-[600px]"></app-left> <!-- Largeur fixe pour app-left -->
-    <div class="w-[60px]"></div> <!-- Espace fixe de 60px au milieu -->
-    <app-right class="w-[600px]"></app-right> <!-- Largeur fixe pour app-right -->
+<div class="pt-2"> <!-- Added container with padding-top -->
+  <div class="flex flex-col-reverse md:flex-row justify-between items-stretch h-full mb-10 mt-4 mx-4">
+    <app-left #leftComponent (formValidityChanged)="formIsValid = $event" class="w-full md:w-[600px]" *ngIf="navigationService.currentComponent === 'left' || !isSmallScreen()"></app-left>
+    <div class="w-full md:w-[60px] h-[60px] md:h-auto"></div>
+    <app-right class="w-full md:w-[600px]" *ngIf="navigationService.currentComponent === 'right' || !isSmallScreen()"></app-right>
+  </div>
+  <div class="md:hidden flex justify-between w-full px-4 py-2">
+    <button (click)="navigationService.showLeftComponent()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-l flex items-center">
+      <span class="mr-2">&#8592;</span> Previous
+    </button>
+    <button [disabled]="!formIsValid" (click)="leftComponent.goToRightComponent()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-r flex items-center">
+      Next <span class="ml-2">&#8594;</span>
+    </button>
+  </div>
+  <router-outlet></router-outlet>
 </div>
-<app-footer></app-footer>
+<router-outlet></router-outlet>

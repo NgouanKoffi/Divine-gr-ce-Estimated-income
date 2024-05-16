@@ -1,0 +1,147 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl relative">
+    <!-- Icone de fermeture -->
+    <button (click)="closeDialog()" class="absolute top-4 right-4 text-gray-700">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    
+    <!-- Formulaire initial -->
+    <form *ngIf="currentView === 'view1'" class="space-y-4 mt-8" (submit)="nextView()">
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700"><span class="text-red-500">*</span>Your Name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="userName" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Enter Text here" required>
+      </div>
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700"><span class="text-red-500">*</span>Your Email</label>
+        <input type="email" id="email" name="email" [(ngModel)]="userEmail" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Enter Text here" required>
+      </div>
+      <div>
+        <label for="phone" class="block text-sm font-medium text-gray-700"><span class="text-red-500">*</span>Your Phone Number</label>
+        <input type="tel" id="phone" name="phone" [(ngModel)]="userPhone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Enter Text here" required>
+      </div>
+      <div class="flex justify-center">
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600">Next</button>
+      </div>
+    </form>
+
+    <!-- Nouveau formulaire pour view2 -->
+    
+
+    <!-- Nouveau formulaire pour view2 -->
+    <form *ngIf="currentView === 'view2'" class="space-y-4 mt-8" (submit)="nextView()">
+      <!-- Contact Details -->
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg">
+          <h2 class="text-lg font-semibold mb-4">Contact Details</h2>
+          <div class="mb-2 flex items-center">
+            <span class="block text-sm font-medium text-gray-700 font-bold mr-4">Full Name</span>
+            <span class="block text-sm text-gray-900">{{ userName }}</span>
+          </div>
+          <div class="mb-2 flex items-center">
+            <span class="block text-sm font-medium text-gray-700 mr-4">Email</span>
+            <span class="block text-sm text-gray-900">{{ userEmail }}</span>
+          </div>
+          <div class="mb-2 flex items-center">
+            <span class="block text-sm font-medium text-gray-700 mr-4">Mobile</span>
+            <span class="block text-sm text-gray-900">{{ userPhone }}</span>
+          </div>
+        </div>
+        <div class="mt-2">
+          <a href="#" class="text-sm text-green-600 hover:underline">Not John Doe? Change Account</a>
+        </div>
+    
+        <!-- Order Summary -->
+        <h2 class="text-lg font-semibold mb-4">Order Summary</h2>
+        <div class="flex items-center mb-4">
+          <img src="../../assets/images/pdf.png" alt="PDF Icon" class="h-12 w-12 mr-4">
+          <div>
+            <span class="block text-sm font-medium text-gray-700">Revenue Estimator PDF</span>
+            <span class="block text-sm text-gray-500">Qty: 1</span>
+          </div>
+        </div>
+        <div class="mb-4">
+          <input type="text" placeholder="Gift or discount code" class="w-full border border-gray-300 rounded-md p-2">
+          <button type="button" class="mt-2 bg-gray-300 text-gray-700 px-4 py-2 rounded-md">Apply</button>
+        </div>
+        <div class="flex justify-between mb-2">
+          <span class="text-sm font-medium text-gray-700">Subtotal</span>
+          <span class="text-sm text-gray-900">{{ subtotal }} AED</span>
+        </div>
+        <div class="flex justify-between mb-2">
+          <span class="text-sm font-medium text-gray-700">Total</span>
+          <span class="text-sm text-gray-900">{{ total }} AED</span>
+        </div>
+        <div class="text-sm text-gray-500">Including 2 AED in taxes</div>
+      </div>
+    
+      <!-- Navigation Buttons -->
+      <div class="flex justify-center mt-6">
+        <button type="button" (click)="previousView()" class="bg-gray-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-gray-600 ml-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </form>
+
+    <!-- Formulaire de paiement pour view3 -->
+    <form *ngIf="currentView === 'view3'" class="space-y-4 mt-8" (submit)="submitOrder()">
+      <h2 class="text-lg font-semibold mb-4">Payment</h2>
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">Pay With:</label>
+        <div class="flex items-center space-x-4 mt-2">
+          <label class="flex items-center">
+            <input type="radio" name="paymentMethod" value="card" class="form-radio text-green-500" checked>
+            <span class="ml-2">Card</span>
+          </label>
+          <label class="flex items-center">
+            <input type="radio" name="paymentMethod" value="bankTransfer" class="form-radio text-green-500">
+            <span class="ml-2">Bank Transfer</span>
+          </label>
+          <label class="flex items-center">
+            <input type="radio" name="paymentMethod" value="crypto" class="form-radio text-green-500">
+            <span class="ml-2">Cryptocurrency</span>
+          </label>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4 mb-4">
+        <img src="../../assets/images/mastercard.png" alt="Mastercard" class="h-8">
+        <img src="../../assets/images/visa.png" alt="Visa" class="h-8">
+      </div>
+      <div class="mb-4">
+        <label for="cardNumber" class="block text-sm font-medium text-gray-700">Card Number</label>
+        <div class="relative mt-1">
+          <input type="text" id="cardNumber" name="cardNumber" class="block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="5399 0000 0000 0000" required>
+          <img src="../../assets/images/mastercard.png" alt="Mastercard" class="absolute right-2 top-2 h-6">
+        </div>
+      </div>
+      <div class="flex space-x-4 mb-4">
+        <div class="w-1/2">
+          <label for="expirationDate" class="block text-sm font-medium text-gray-700">Expiration Date</label>
+          <input type="text" id="expirationDate" name="expirationDate" class="block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="MM/YY" required>
+        </div>
+        <div class="w-1/2">
+          <label for="cvv" class="block text-sm font-medium text-gray-700">CVV</label>
+          <input type="text" id="cvv" name="cvv" class="block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="***" required>
+        </div>
+      </div>
+      <div class="flex items-center mb-4">
+        <input type="checkbox" id="saveCard" name="saveCard" class="form-checkbox">
+        <label for="saveCard" class="ml-2 block text-sm text-gray-700">Save card details</label>
+      </div>
+      <div class="flex justify-center">
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-green-600">Pay {{ total }} AED</button>
+      </div>
+      <div class="text-sm text-gray-500 mt-4">
+        Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.
+      </div>
+    </form>
+    </div>
+</div>

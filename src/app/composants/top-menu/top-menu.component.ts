@@ -29,7 +29,7 @@ export class TopMenuComponent {
   }
 
   private checkScreenSize(width: number): void {
-    if (width > 804) {
+    if (width > 814) {
       this.showSidebar = false;
     }
   }
